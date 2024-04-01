@@ -1,0 +1,18 @@
+#Specify a base image
+FROM node:18-alpine
+
+#Create the working directory
+WORKDIR /usr/app
+
+#Copy the package.json file
+COPY package.json ./
+
+#Install required dependencies
+RUN npm install
+
+#Copy other files ->./ ./  -> if more than one files are present
+# since only one file present in this application
+COPY index.js ./  
+
+#Start the server
+CMD ["npm","start"]
